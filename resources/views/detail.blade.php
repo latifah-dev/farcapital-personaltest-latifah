@@ -23,10 +23,37 @@
     <tbody>
     <tr>
         <th scope="row">1</th>
-        <td>Apakah anda menderita hepatitis</td>
-        <td></td>
+        <td>Apakah anda pernah menderita hepatitis?</td>
+        <td>
+            @if ($pernyataan->hepatitisB == 0)
+                Tidak
+            @else
+                Ya
+            @endif
+        </td>
     </tr>
-
+    <tr>
+        <th scope="row">2</th>
+        <td>Dalam jangka waktu 6 bulan apakah anda kontak erat dengan penderita hepatitis? </td>
+        <td>
+            @if ($pernyataan->kontakhepatitis == 0)
+                Tidak
+            @else
+                Ya
+            @endif
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Dalam jangka waktu 6 bulan apakah anda sudah mendapatkan transfusi? </td>
+        <td>
+            @if ($pernyataan->dapattransfusi == 0)
+                Tidak
+            @else
+                Ya
+            @endif
+        </td>
+    </tr>
 
     </tbody>
   </table>

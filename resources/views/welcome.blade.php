@@ -26,9 +26,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/pendaftar">Registrasi</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/pernyataan">Persyaratan</a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="/list">List Pendaftar</a>
             </li>
@@ -38,6 +36,7 @@
       </nav>
     </div>
       @yield('content')
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

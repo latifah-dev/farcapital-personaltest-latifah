@@ -2,8 +2,7 @@
 @section('content')
 <div class="container">
 @if (Session::has('status'))
-{{Session::get('message')}}
-<!---<a href="/pernyataan/{{$pendonor->id}}">KLIK DISINI !</a>-->
+<h1>{{Session::get('message')}}</h1>
 @endif
 <form action="/store" method="post">
     @csrf

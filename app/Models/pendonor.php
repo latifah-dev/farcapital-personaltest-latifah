@@ -13,5 +13,6 @@ class pendonor extends Model
         'gender',
         'tanggallahir',
         'alamat',
+        'status',
     ];
 }

@@ -19,15 +19,32 @@ class PendonorController extends Controller
             Session::flash('status', 'success');
             Session::flash('message', 'anda telah berhasil mendaftar, silahkan mengisi persyaratan !');
         }
-        return redirect('/pernyataan');
+        return view('pernyataan',['pendonor'=>$pendonor]);
     }
-    public function storedetail(Request $request) {
+    public function storedetail(Request $request, Pendonor $pendonor) {
+        $pendonor = Pendonor::query()->where('id',$request->input('idpendonor'))->first();
+        if($request->input('hepatitisB') == 0 ) {
+        $pendonor->status = 'layak';
+        } else {
+        $pendonor->status =  'tidak layak';
+        }
+        if($request->input('kontakhepatitis') == 0 ) {
+            $pendonor->status = 'layak';
+            } else {
+            $pendonor->status =  'tidak layak';
+            }
+            if($request->input('dapattransfusi') == 0 ) {
+                $pendonor->status = 'layak';
+                } else {
+                $pendonor->status =  'tidak layak';
+                }
         $pernyataan = Pernyataanpendonor::create($request->all());
+        $pendonor->save();
         if($pernyataan) {
             Session::flash('status', 'success');
-            Session::flash('message', 'anda telah berhasil mengisi form pernyataan');
+            Session::flash('message', 'anda telah berhasil mengisi form pernyataan. silahkan menemui petugas untuk tindak lanjut');
         }
-        return redirect('/pernyataan');
+        return redirect('/pendaftar');
     }
     public function storekesehatan(Request $request) {
         $kesehatan = Kesehatan::create($request->all());
@@ -35,16 +52,11 @@ class PendonorController extends Controller
             Session::flash('status', 'success');
             Session::flash('message', 'anda telah berhasil mengisi form pernyataan');
         }
-        return redirect('/');
+        return redirect('/detail');
     }
-    //public function pernyataan($id) {
-    //    $pendonor = Pendonor::findOrFail($id);
-    //    return view('pernyataan', ['pendonor' => $pendonor]);
-    //}
 
-    public function pernyataan() {
-        //$pendonor = Pendonor::all();
-        return view('pernyataan');
+    public function pernyataan(Pendonor $pendonor) {
+        return view('pernyataan',['pendonor'=>$pendonor]);
     }
     public function list() {
         $pendonor = Pendonor::all();
@@ -52,10 +64,12 @@ class PendonorController extends Controller
     }
     public function detail($id) {
         $pendonor = Pendonor::findOrFail($id);
-        return view('detail', ['pendonor' => $pendonor]);
+        $pernyataan = Pernyataanpendonor::query()->where('idpendonor',$id)->first();
+        return view('detail', ['pendonor' => $pendonor], ['pernyataan' => $pernyataan]);
         }
     public function kesehatan($id) {
             $pendonor = Pendonor::findOrFail($id);
             return view('kesehatan', ['pendonor' => $pendonor]);
             }
 }
+
