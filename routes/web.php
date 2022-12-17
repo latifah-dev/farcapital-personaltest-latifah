@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PendonorController;
+use App\Http\Controllers\PenggunaController;
 
 
 Route::get('/', function () {
@@ -16,3 +17,5 @@ Route::get('/pernyataan/{pendonor}',[PendonorController::class,'pernyataan'])->n
 Route::get('/list',[PendonorController::class,'list']);
 Route::get('/detail/{id}',[PendonorController::class,'detail']);
 Route::get('/kesehatan/{id}',[PendonorController::class,'kesehatan']);
+Route::any("/login", [PenggunaController::class, 'login'])->name("login");
+Route::any("/logout", [PenggunaController::class, 'logout'])->name("logout");

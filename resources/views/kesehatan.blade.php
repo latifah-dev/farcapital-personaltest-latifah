@@ -87,10 +87,11 @@
           <label class="form-check-label" for="inlineRadio1">LOLOS</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="hemogloblin" id="hepatitisB" value="TIDAK LOLOS">
+          <input class="form-check-input" type="radio" name="hemoglobin" id="hepatitisB" value="TIDAK LOLOS">
           <label class="form-check-label" for="inlineRadio2">TIDAK LOLOS</label>
         </div>
       </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

@@ -23,15 +23,27 @@
             <li class="nav-item active">
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
+
+            @if (!session()->get("logged", false))
             <li class="nav-item">
-              <a class="nav-link" href="/pendaftar">Registrasi</a>
+                <a class="nav-link" href="/pendaftar">Registrasi</a>
             </li>
+            <li class="invisible nav-item">
+                <a class="nav-link" href="/list">List Pendaftar</a>
+            </li>
+            @else
 
             <li class="nav-item">
                 <a class="nav-link" href="/list">List Pendaftar</a>
             </li>
+            @endif
           </ul>
-            <a href="#" class="btn btn-outline-success my-2 my-sm-0">Login</a>
+          @if (!session()->get("logged", false))
+          <a href="/login" class="btn btn-outline-success my-2 my-sm-0">Login</a>
+          @else
+          <a href="/logout" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+          @endif
+
         </div>
       </nav>
     </div>

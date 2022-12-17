@@ -52,7 +52,7 @@ class PendonorController extends Controller
             Session::flash('status', 'success');
             Session::flash('message', 'anda telah berhasil mengisi form pernyataan');
         }
-        return redirect('/detail');
+        return redirect('/list');
     }
 
     public function pernyataan(Pendonor $pendonor) {
